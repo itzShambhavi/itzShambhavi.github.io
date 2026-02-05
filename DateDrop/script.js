@@ -170,8 +170,7 @@
 
   if (quizScrollToPretty) {
     quizScrollToPretty.addEventListener('click', function () {
-      var prettySection = document.getElementById('pretty-quiz');
-      if (prettySection) prettySection.scrollIntoView({ behavior: 'smooth' });
+      unlockAndGoTo('pretty-quiz');
     });
   }
 
@@ -246,10 +245,25 @@
     prettyObserver.observe(prettyQuizSection);
   }
 
-  if (prettyQuizToCute && cuteTogetherSection) {
+  if (prettyQuizToCute) {
     prettyQuizToCute.addEventListener('click', function () {
-      cuteTogetherSection.scrollIntoView({ behavior: 'smooth' });
+      unlockAndGoTo('cute-together');
     });
+  }
+
+  function unlockSection(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('screen--locked');
+  }
+
+  function scrollToSection(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function unlockAndGoTo(id) {
+    unlockSection(id);
+    scrollToSection(id);
   }
 
   function unlockChoiceAndScroll() {
@@ -258,26 +272,37 @@
     choiceSection.scrollIntoView({ behavior: 'smooth' });
   }
 
-  function scrollToTtt() {
-    var tttSection = document.getElementById('ttt');
-    if (tttSection) tttSection.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  if (btnYesBabiii) btnYesBabiii.addEventListener('click', scrollToTtt);
-  if (btnYesBabbiii) btnYesBabbiii.addEventListener('click', scrollToTtt);
+  if (btnYesBabiii) btnYesBabiii.addEventListener('click', function () {
+    unlockSection('choice');
+    choiceSection.classList.remove('screen-choice--locked');
+    choiceSection.classList.add('screen-choice--unlocked');
+    scrollToSection('choice');
+  });
+  if (btnYesBabbiii) btnYesBabbiii.addEventListener('click', function () {
+    unlockSection('choice');
+    choiceSection.classList.remove('screen-choice--locked');
+    choiceSection.classList.add('screen-choice--unlocked');
+    scrollToSection('choice');
+  });
 
   function unlockAllSections() {
-    var lockedSections = document.querySelectorAll('.screen--locked');
-    lockedSections.forEach(function (section) {
-      section.classList.remove('screen--locked');
-    });
-    var heroEl = document.getElementById('hero');
-    if (heroEl) heroEl.scrollIntoView({ behavior: 'smooth' });
+    unlockSection('hero');
+    scrollToSection('hero');
   }
 
   if (document.getElementById('ttt-to-hero')) {
     document.getElementById('ttt-to-hero').addEventListener('click', unlockAllSections);
   }
+
+  scrollDown.addEventListener('click', function () {
+    unlockSection('memes');
+    scrollToSection('memes');
+  });
+
+  var memesToQuiz = document.getElementById('memes-to-quiz');
+  if (memesToQuiz) memesToQuiz.addEventListener('click', function () {
+    unlockAndGoTo('quiz');
+  });
 
   // --- Tic-tac-toe (player = heart O, computer = X; win to unlock invitation) ---
   var TTT_WIN_LINES = [
@@ -437,12 +462,7 @@
   }
   if (tttRestartBtn) tttRestartBtn.addEventListener('click', tttRestart);
 
-  // --- Scroll flow ---
-  function scrollToMemes() {
-    memesSection.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  scrollDown.addEventListener('click', scrollToMemes);
+  // --- Scroll flow (hero scroll-down handled above: unlocks memes + scroll) ---
 
   // Meme cards: reveal when in view
   const memesObserver = new IntersectionObserver(
