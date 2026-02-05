@@ -635,7 +635,124 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* Choice locked until lore + pretty quiz + cute together */
+/* --- Tic-tac-toe (FIRST SCREEN) --- */
+.screen-ttt {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
+.screen-ttt--first {
+  display: flex !important;
+}
+
+.ttt-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+}
+
+.ttt-intro {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin: 0 auto 1.5rem;
+  max-width: 28ch;
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  max-width: 240px;
+  margin: 0 auto 1rem;
+}
+
+.ttt-cell {
+  aspect-ratio: 1;
+  border: 2px solid var(--blush);
+  border-radius: var(--radius);
+  background: var(--white);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ttt-cell:hover:not(:disabled) {
+  background: rgba(201, 74, 90, 0.08);
+  border-color: var(--rose);
+  transform: scale(1.02);
+}
+
+.ttt-cell:disabled {
+  cursor: default;
+}
+
+.ttt-cell--heart {
+  color: var(--valentine-red);
+  font-size: 2.25rem;
+}
+
+.ttt-cell--x {
+  color: var(--text-soft);
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.ttt-status {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin: 0 0 1rem;
+}
+
+.ttt-result,
+.ttt-won {
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(201, 74, 90, 0.12);
+}
+
+.ttt-result--hidden,
+.ttt-won--hidden {
+  display: none !important;
+}
+
+.ttt-result-text,
+.ttt-won-text {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0 0 1rem;
+}
+
+.btn-ttt-restart {
+  background: var(--white);
+  color: var(--valentine-red);
+  border: 2px solid var(--rose);
+}
+
+.btn-ttt-restart:hover {
+  background: rgba(201, 74, 90, 0.08);
+}
+
+/* Hide all sections until tic-tac-toe is won */
+.screen--locked {
+  display: none !important;
+}
+
+/* Tic-tac-toe is always visible (first screen) */
+.screen-ttt--first {
+  display: flex !important;
+}
+
+/* Choice locked until lore + pretty quiz + cute together + ttt win */
 .screen-choice--locked {
   opacity: 0.5;
   pointer-events: none;
@@ -643,7 +760,7 @@ body {
 }
 
 .screen-choice--locked::after {
-  content: "🔒 Complete the steps above (then say we're cute together) to unlock";
+  content: "🔒 Complete the steps above, then win tic-tac-toe to unlock";
   position: absolute;
   top: 50%;
   left: 50%;

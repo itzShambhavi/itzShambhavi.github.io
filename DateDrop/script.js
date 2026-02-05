@@ -258,8 +258,184 @@
     choiceSection.scrollIntoView({ behavior: 'smooth' });
   }
 
-  if (btnYesBabiii) btnYesBabiii.addEventListener('click', unlockChoiceAndScroll);
-  if (btnYesBabbiii) btnYesBabbiii.addEventListener('click', unlockChoiceAndScroll);
+  function scrollToTtt() {
+    var tttSection = document.getElementById('ttt');
+    if (tttSection) tttSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  if (btnYesBabiii) btnYesBabiii.addEventListener('click', scrollToTtt);
+  if (btnYesBabbiii) btnYesBabbiii.addEventListener('click', scrollToTtt);
+
+  function unlockAllSections() {
+    var lockedSections = document.querySelectorAll('.screen--locked');
+    lockedSections.forEach(function (section) {
+      section.classList.remove('screen--locked');
+    });
+    var heroEl = document.getElementById('hero');
+    if (heroEl) heroEl.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  if (document.getElementById('ttt-to-hero')) {
+    document.getElementById('ttt-to-hero').addEventListener('click', unlockAllSections);
+  }
+
+  // --- Tic-tac-toe (player = heart O, computer = X; win to unlock invitation) ---
+  var TTT_WIN_LINES = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
+  ];
+
+  var tttBoard = ['', '', '', '', '', '', '', '', ''];
+  var tttGameOver = false;
+  var tttBoardEl = document.getElementById('ttt-board');
+  var tttStatusEl = document.getElementById('ttt-status');
+  var tttResultEl = document.getElementById('ttt-result');
+  var tttResultTextEl = document.getElementById('ttt-result-text');
+  var tttWonEl = document.getElementById('ttt-won');
+  var tttRestartBtn = document.getElementById('ttt-restart');
+
+  function tttCheckWinner(board) {
+    for (var i = 0; i < TTT_WIN_LINES.length; i++) {
+      var a = TTT_WIN_LINES[i][0], b = TTT_WIN_LINES[i][1], c = TTT_WIN_LINES[i][2];
+      if (board[a] && board[a] === board[b] && board[b] === board[c]) return board[a];
+    }
+    if (board.every(function (c) { return c !== ''; })) return 'draw';
+    return null;
+  }
+
+  function tttEmptyIndices(board) {
+    var out = [];
+    for (var i = 0; i < 9; i++) if (board[i] === '') out.push(i);
+    return out;
+  }
+
+  function tttAiMove(board) {
+    var empty = tttEmptyIndices(board);
+    if (empty.length === 0) return -1;
+    var i, j, line, countX, countO, emptyInLine;
+    // Try to win (but only 70% of the time)
+    if (Math.random() < 0.7) {
+      for (i = 0; i < TTT_WIN_LINES.length; i++) {
+        line = TTT_WIN_LINES[i];
+        countX = 0; countO = 0; emptyInLine = -1;
+        for (j = 0; j < 3; j++) {
+          if (board[line[j]] === 'X') countX++;
+          else if (board[line[j]] === 'O') countO++;
+          else emptyInLine = line[j];
+        }
+        if (countX === 2 && emptyInLine !== -1) return emptyInLine;
+      }
+    }
+    // Try to block (but only 50% of the time - makes it easier!)
+    if (Math.random() < 0.5) {
+      for (i = 0; i < TTT_WIN_LINES.length; i++) {
+        line = TTT_WIN_LINES[i];
+        countX = 0; countO = 0; emptyInLine = -1;
+        for (j = 0; j < 3; j++) {
+          if (board[line[j]] === 'X') countX++;
+          else if (board[line[j]] === 'O') countO++;
+          else emptyInLine = line[j];
+        }
+        if (countO === 2 && emptyInLine !== -1) return emptyInLine;
+      }
+    }
+    // Sometimes skip center (30% chance)
+    if (board[4] === '' && Math.random() > 0.3) return 4;
+    // Mix of corners and random
+    var corners = [0, 2, 6, 8];
+    var availableCorners = corners.filter(function (idx) { return board[idx] === ''; });
+    if (availableCorners.length > 0 && Math.random() > 0.4) {
+      return availableCorners[Math.floor(Math.random() * availableCorners.length)];
+    }
+    // Otherwise random move
+    return empty[Math.floor(Math.random() * empty.length)];
+  }
+
+  function tttRender() {
+    if (!tttBoardEl) return;
+    var cells = tttBoardEl.querySelectorAll('.ttt-cell');
+    cells.forEach(function (cell, i) {
+      var val = tttBoard[i];
+      cell.textContent = val === 'O' ? '♥' : val === 'X' ? '×' : '';
+      cell.className = 'ttt-cell' + (val === 'O' ? ' ttt-cell--heart' : val === 'X' ? ' ttt-cell--x' : '');
+      cell.disabled = !!val || tttGameOver;
+    });
+  }
+
+  function tttShowResult(message) {
+    tttBoardEl.style.display = 'none';
+    tttStatusEl.style.display = 'none';
+    tttResultTextEl.textContent = message;
+    tttResultEl.classList.remove('ttt-result--hidden');
+    tttWonEl.classList.add('ttt-won--hidden');
+  }
+
+  function tttShowWon() {
+    tttBoardEl.style.display = 'none';
+    tttStatusEl.style.display = 'none';
+    tttResultEl.classList.add('ttt-result--hidden');
+    tttWonEl.classList.remove('ttt-won--hidden');
+    unlockAllSections();
+  }
+
+  function tttEndGame(winner) {
+    tttGameOver = true;
+    tttRender();
+    if (winner === 'O') {
+      tttShowWon();
+    } else if (winner === 'draw') {
+      tttShowResult('Draw! Try again — win to unlock the invitation 💕');
+    } else {
+      tttShowResult('Computer wins this time. Try again — the invitation is waiting! 💕');
+    }
+  }
+
+  function tttDoComputerMove() {
+    var idx = tttAiMove(tttBoard);
+    if (idx < 0) return;
+    tttBoard[idx] = 'X';
+    tttRender();
+    var winner = tttCheckWinner(tttBoard);
+    if (winner) {
+      tttEndGame(winner);
+    } else {
+      tttStatusEl.textContent = 'Your turn — place your heart ♥';
+    }
+  }
+
+  function tttCellClick(e) {
+    var cell = e.target.closest('.ttt-cell');
+    if (!cell || tttGameOver) return;
+    var i = parseInt(cell.getAttribute('data-i'), 10);
+    if (tttBoard[i] !== '') return;
+    tttBoard[i] = 'O';
+    tttRender();
+    var winner = tttCheckWinner(tttBoard);
+    if (winner) {
+      tttEndGame(winner);
+      return;
+    }
+    tttStatusEl.textContent = 'Computer is thinking...';
+    setTimeout(tttDoComputerMove, 400);
+  }
+
+  function tttRestart() {
+    tttBoard = ['', '', '', '', '', '', '', '', ''];
+    tttGameOver = false;
+    tttBoardEl.style.display = '';
+    tttStatusEl.style.display = '';
+    tttResultEl.classList.add('ttt-result--hidden');
+    tttWonEl.classList.add('ttt-won--hidden');
+    tttStatusEl.textContent = 'Your turn — tap a cell to place your heart ♥';
+    tttRender();
+  }
+
+  if (tttBoardEl) {
+    tttBoardEl.addEventListener('click', tttCellClick);
+    tttRender();
+  }
+  if (tttRestartBtn) tttRestartBtn.addEventListener('click', tttRestart);
 
   // --- Scroll flow ---
   function scrollToMemes() {
