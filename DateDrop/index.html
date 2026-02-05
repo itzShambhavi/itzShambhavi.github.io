@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Date Drop — Limited Edition 💕 Shambhavi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="hearts-bg" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <section class="screen screen-hero active" id="hero">
+    <div class="hero-content">
+      <span class="launch-pill">Limited edition drop</span>
+      <img src="images/Shambhavi_1.jpg" alt="Shambhavi" class="hero-photo" width="160" height="160" />
+      <p class="hero-product">The Date Drop × Valentine's 2026</p>
+      <p class="hero-badge">Exclusive invite • 1 of 1</p>
+      <h1 class="hero-title">
+        <span class="name" id="name-target" title="Click me a few times 😏">Shambhavi</span>, you've been selected. Will you be my Valentine? <span class="sparkle" id="sparkle" title="Double-click for magic">✨</span>
+      </h1>
+      <p class="hero-sub">Scroll for full reveal 💕</p>
+      <p class="hero-availability">Drops Feb 14</p>
+    </div>
+    <button type="button" class="cta-scroll" id="scroll-down" aria-label="Scroll down">
+      <span class="cta-scroll-heart">💕</span>
+      <span>↓</span>
+    </button>
+  </section>
+
+  <!-- Meme cards -->
+  <section class="screen screen-memes" id="memes">
+    <span class="section-pill">Sneak peek</span>
+    <h2 class="section-label">Behind the scenes</h2>
+    <div class="meme-cards">
+      <div class="meme-card" data-delay="0">
+        <div class="meme-label">Me pretending I'm chill</div>
+        <div class="meme-img chill" aria-hidden="true">😌</div>
+      </div>
+      <div class="meme-card" data-delay="1">
+        <div class="meme-label">Me when you reply</div>
+        <div class="meme-img reply" aria-hidden="true">🥹💖</div>
+      </div>
+    </div>
+    <p class="memes-caption">So… what do you say?</p>
+  </section>
+
+  <!-- Lore Quiz -->
+  <section class="screen screen-quiz" id="quiz">
+    <span class="section-pill">Mandatory lore check 😤</span>
+    <h2 class="quiz-title">Shambhavi × Martin: The Lore Quiz <span class="quiz-emoji">💘</span></h2>
+    <p class="quiz-intro">Prove you know the lore. Score 7+ to unlock the next section. No pressure. (Okay, a little pressure.)</p>
+    <form class="quiz-form" id="quiz-form">
+      <div class="quiz-question">
+        <p class="quiz-q">1) When did the legendary first convo happen?</p>
+        <label class="quiz-opt"><input type="radio" name="q1" value="A" /> A. 03/13/2024</label>
+        <label class="quiz-opt"><input type="radio" name="q1" value="B" /> B. 03/16/2024</label>
+        <label class="quiz-opt"><input type="radio" name="q1" value="C" /> C. 01/13/2024</label>
+        <label class="quiz-opt"><input type="radio" name="q1" value="D" /> D. 04/02/2024</label>
+      </div>
+      <div class="quiz-question">
+        <p class="quiz-q">2) What was Shambhavi's FIRST message to Martin?</p>
+        <label class="quiz-opt"><input type="radio" name="q2" value="A" /> A. "Hello sir."</label>
+        <label class="quiz-opt"><input type="radio" name="q2" value="B" /> B. "Hieee How're you doing"</label>
+        <label class="quiz-opt"><input type="radio" name="q2" value="C" /> C. "wyd 😏"</label>
+        <label class="quiz-opt"><input type="radio" name="q2" value="D" /> D. "Do you code?"</label>
+      </div>
+      <div class="quiz-question">
+        <p class="quiz-q">3) What did Martin reply with (aka the 'I'm calm and respectful' arc)?</p>
+        <label class="quiz-opt"><input type="radio" name="q3" value="A" /> A. "hey"</label>
+        <label class="quiz-opt"><input type="radio" name="q3" value="B" /> B. "I'm doing well :) how about you"</label>
+        <label class="quiz-opt"><input type="radio" name="q3" value="C" /> C. "OMG FINALLY"</label>
+        <label class="quiz-opt"><input type="radio" name="q3" value="D" /> D. "send playlist"</label>
+      </div>
+      <div class="quiz-question">
+        <p class="quiz-q">4) When did we first match and start talking?</p>
+        <label class="quiz-opt"><input type="radio" name="q4" value="A" /> A. Jan 2024</label>
+        <label class="quiz-opt"><input type="radio" name="q4" value="B" /> B. Feb 2024</label>
+        <label class="quiz-opt"><input type="radio" name="q4" value="C" /> C. Mar 2024</label>
+        <label class="quiz-opt"><input type="radio" name="q4" value="D" /> D. Apr 2024</label>
+      </div>
+      <div class="quiz-question">
+        <p class="quiz-q">5) First video call date?</p>
+        <label class="quiz-opt"><input type="radio" name="q5" value="A" /> A. 03/13/2024</label>
+        <label class="quiz-opt"><input type="radio" name="q5" value="B" /> B. 03/16/2024</label>
+        <label class="quiz-opt"><input type="radio" name="q5" value="C" /> C. 04/02/2024</label>
+        <label class="quiz-opt"><input type="radio" name="q5" value="D" /> D. 01/16/2024</label>
+      </div>
+      <div class="quiz-question">
+        <p class="quiz-q">6) How long was that first video call?</p>
+        <label class="quiz-opt"><input type="radio" name="q6" value="A" /> A. 15 minutes (speedrun)</label>
+        <label class="quiz-opt"><input type="radio" name="q6" value="B" /> B. 30 minutes (warmup)</label>
+        <label class="quiz-opt"><input type="radio" name="q6" value="C" /> C. 45 minutes (the canon event)</label>
+        <label class="quiz-opt"><input type="radio" name="q6" value="D" /> D. 2 hours (main quest)</label>
+      </div>
+      <div class="quiz-question">
+        <p class="quiz-q">7) On April 2nd… how long did we talk on video call?</p>
+        <label class="quiz-opt"><input type="radio" name="q7" value="A" /> A. 1 hour</label>
+        <label class="quiz-opt"><input type="radio" name="q7" value="B" /> B. 2 hours</label>
+        <label class="quiz-opt"><input type="radio" name="q7" value="C" /> C. 4 hours</label>
+        <label class="quiz-opt"><input type="radio" name="q7" value="D" /> D. 8 hours (sleep call DLC)</label>
+      </div>
+      <div class="quiz-question">
+        <p class="quiz-q">8) Shambhavi drank alcohol for the first time in…</p>
+        <label class="quiz-opt"><input type="radio" name="q8" value="A" /> A. 6th grade</label>
+        <label class="quiz-opt"><input type="radio" name="q8" value="B" /> B. 7th grade</label>
+        <label class="quiz-opt"><input type="radio" name="q8" value="C" /> C. 8th grade</label>
+        <label class="quiz-opt"><input type="radio" name="q8" value="D" /> D. College</label>
+      </div>
+      <div class="quiz-question quiz-bonus">
+        <p class="quiz-q">9) Bonus (funny): What was April 2nd?</p>
+        <label class="quiz-opt"><input type="radio" name="q9" value="A" /> A. "A normal call"</label>
+        <label class="quiz-opt"><input type="radio" name="q9" value="B" /> B. "A 4-hour yapathon"</label>
+        <label class="quiz-opt"><input type="radio" name="q9" value="C" /> C. "Proof we're addicted"</label>
+        <label class="quiz-opt"><input type="radio" name="q9" value="D" /> D. All of the above 😭</label>
+      </div>
+      <div class="quiz-question quiz-question--video">
+        <video class="lore-quiz-video" src="videos/ouchie.MP4" controls playsinline></video>
+        <p class="quiz-q">10) ouchie.mp4 dropped into the timeline on what date? 😭📼</p>
+        <label class="quiz-opt"><input type="radio" name="q10" value="A" /> A. 03/13/2024</label>
+        <label class="quiz-opt"><input type="radio" name="q10" value="B" /> B. 03/16/2024</label>
+        <label class="quiz-opt"><input type="radio" name="q10" value="C" /> C. 03/29/2024</label>
+        <label class="quiz-opt"><input type="radio" name="q10" value="D" /> D. 04/02/2024</label>
+      </div>
+      <div class="quiz-actions">
+        <button type="submit" class="btn btn-quiz-submit" id="quiz-submit">Submit my lore</button>
+      </div>
+    </form>
+    <div class="quiz-result quiz-result--hidden" id="quiz-result" aria-live="polite">
+      <p class="quiz-result-text" id="quiz-result-text"></p>
+      <button type="button" class="btn btn-quiz-redo" id="quiz-redo">Try again 😤</button>
+    </div>
+    <div class="quiz-passed quiz-passed--hidden" id="quiz-passed" aria-live="polite">
+      <p class="quiz-passed-text">You passed! 💕 Scroll down to the next (very important) quiz.</p>
+      <button type="button" class="btn btn-quiz-scroll" id="quiz-scroll-to-pretty">Take me there →</button>
+    </div>
+  </section>
+
+  <!-- Pretty quiz (no wrong answer, just funny) -->
+  <section class="screen screen-pretty-quiz" id="pretty-quiz">
+    <span class="section-pill">Critical research</span>
+    <h2 class="pretty-quiz-title">The Pretty Quiz <span aria-hidden="true">💅</span></h2>
+    <p class="pretty-quiz-intro">Answer honestly. (There is no wrong answer. We're just establishing facts.)</p>
+    <div class="pretty-quiz-slides" id="pretty-quiz-slides">
+      <div class="pretty-slide pretty-slide--video pretty-slide--active" data-slide="0">
+        <video class="pretty-slide-video" src="videos/cutie.MP4" playsinline muted loop></video>
+        <p class="pretty-slide-q">Is she cute?</p>
+        <div class="pretty-slide-opts">
+          <button type="button" class="btn btn-pretty-opt">Yes</button>
+          <button type="button" class="btn btn-pretty-opt">So cute</button>
+          <button type="button" class="btn btn-pretty-opt">Obviously cute</button>
+          <button type="button" class="btn btn-pretty-opt">Very cute 💕</button>
+        </div>
+      </div>
+      <div class="pretty-slide pretty-slide--video" data-slide="1">
+        <video class="pretty-slide-video" src="videos/cutie.MP4" playsinline muted loop></video>
+        <p class="pretty-slide-q">Is she pretty? (Video evidence.)</p>
+        <div class="pretty-slide-opts">
+          <button type="button" class="btn btn-pretty-opt">Pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Very pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Extremely pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Yes. Next question.</button>
+        </div>
+      </div>
+      <div class="pretty-slide pretty-slide--video" data-slide="2">
+        <video class="pretty-slide-video" src="videos/cutie.MP4" playsinline muted loop></video>
+        <p class="pretty-slide-q">Cute AND pretty? (This is a trick question. The answer is yes.)</p>
+        <div class="pretty-slide-opts">
+          <button type="button" class="btn btn-pretty-opt">Yes</button>
+          <button type="button" class="btn btn-pretty-opt">Obviously both</button>
+          <button type="button" class="btn btn-pretty-opt">Cute + pretty = her</button>
+          <button type="button" class="btn btn-pretty-opt">💅 Correct 💅</button>
+        </div>
+      </div>
+      <div class="pretty-slide" data-slide="3">
+        <img src="images/Pretty/pretty1.JPG" alt="" class="pretty-slide-img" />
+        <p class="pretty-slide-q">Is she pretty?</p>
+        <div class="pretty-slide-opts">
+          <button type="button" class="btn btn-pretty-opt">Yes</button>
+          <button type="button" class="btn btn-pretty-opt">Obviously yes</button>
+          <button type="button" class="btn btn-pretty-opt">Pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Very pretty</button>
+        </div>
+      </div>
+      <div class="pretty-slide" data-slide="4">
+        <img src="images/Pretty/pretty2.JPG" alt="" class="pretty-slide-img" />
+        <p class="pretty-slide-q">Pretty????</p>
+        <div class="pretty-slide-opts">
+          <button type="button" class="btn btn-pretty-opt">??? Pretty ???</button>
+          <button type="button" class="btn btn-pretty-opt">Yes pretty</button>
+          <button type="button" class="btn btn-pretty-opt">So pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Pretty pretty</button>
+        </div>
+      </div>
+      <div class="pretty-slide" data-slide="5">
+        <img src="images/Pretty/pretty3.JPG" alt="" class="pretty-slide-img" />
+        <p class="pretty-slide-q">But like. Is she <em>PRETTY</em> pretty?</p>
+        <div class="pretty-slide-opts">
+          <button type="button" class="btn btn-pretty-opt">The prettiest</button>
+          <button type="button" class="btn btn-pretty-opt">Extremely pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Pretty (correct)</button>
+          <button type="button" class="btn btn-pretty-opt">Yes.</button>
+        </div>
+      </div>
+      <div class="pretty-slide" data-slide="6">
+        <img src="images/Pretty/pretty4.jpeg" alt="" class="pretty-slide-img" />
+        <p class="pretty-slide-q">On a scale of pretty to pretty, how pretty?</p>
+        <div class="pretty-slide-opts">
+          <button type="button" class="btn btn-pretty-opt">Pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Very pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Off the scale</button>
+          <button type="button" class="btn btn-pretty-opt">All of the above</button>
+        </div>
+      </div>
+      <div class="pretty-slide" data-slide="7">
+        <img src="images/Pretty/pretty5.jpeg" alt="" class="pretty-slide-img" />
+        <p class="pretty-slide-q">Is this person pretty? (Asking for a friend.)</p>
+        <div class="pretty-slide-opts">
+          <button type="button" class="btn btn-pretty-opt">Your friend says yes</button>
+          <button type="button" class="btn btn-pretty-opt">Obviously pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Pretty 💕</button>
+          <button type="button" class="btn btn-pretty-opt">Extremely yes</button>
+        </div>
+      </div>
+      <div class="pretty-slide" data-slide="8">
+        <img src="images/Pretty/pretty6.jpeg" alt="" class="pretty-slide-img" />
+        <p class="pretty-slide-q">Final verdict: pretty? (We already know the answer.)</p>
+        <div class="pretty-slide-opts">
+          <button type="button" class="btn btn-pretty-opt">Yes</button>
+          <button type="button" class="btn btn-pretty-opt">Absolutely pretty</button>
+          <button type="button" class="btn btn-pretty-opt">Pretty. Case closed.</button>
+          <button type="button" class="btn btn-pretty-opt">💅 Pretty 💅</button>
+        </div>
+      </div>
+    </div>
+    <div class="pretty-quiz-done pretty-quiz-done--hidden" id="pretty-quiz-done">
+      <p class="pretty-quiz-done-text">Correct. (All answers were correct. We're not biased.)</p>
+      <button type="button" class="btn btn-quiz-scroll" id="pretty-quiz-to-cute">Take me to the last question →</button>
+    </div>
+  </section>
+
+  <!-- Are we cute together? (final step before Valentine ask) -->
+  <section class="screen screen-cute-together" id="cute-together">
+    <span class="section-pill">Final quiz</span>
+    <h2 class="cute-together-title">Are we cute together?</h2>
+    <div class="cute-together-photos">
+      <img src="images/together/1.jpeg" alt="" class="cute-together-img" />
+      <img src="images/together/2.jpeg" alt="" class="cute-together-img" />
+    </div>
+    <div class="cute-together-buttons">
+      <button type="button" class="btn btn-cute-yes" id="btn-yes-babiii">Yes BABIIII</button>
+      <button type="button" class="btn btn-cute-yes" id="btn-yes-babbiii">YES BABBIII</button>
+    </div>
+  </section>
+
+  <!-- Choice (locked until lore + pretty quiz + cute together) -->
+  <section class="screen screen-choice screen-choice--locked" id="choice">
+    <span class="section-pill">Reserve your spot</span>
+    <h2 class="choice-title">Will you be my Valentine?</h2>
+    <p class="choice-sub">Limited to one recipient. Claim your date.</p>
+    <div class="buttons">
+      <button type="button" class="btn btn-yes" id="btn-yes">
+        YES <span aria-hidden="true">💖</span>
+      </button>
+      <button type="button" class="btn btn-think" id="btn-think">
+        Let me think… <span aria-hidden="true">🤔</span>
+      </button>
+    </div>
+    <p class="choice-hint" id="choice-hint">(The right answer is the left button.)</p>
+  </section>
+
+  <!-- Success -->
+  <section class="screen screen-success" id="success" aria-hidden="true">
+    <div class="success-content">
+      <span class="success-pill">Order confirmed</span>
+      <img src="images/Shambhavi_1.jpg" alt="" class="success-photo" width="100" height="100" />
+      <p class="success-badge" id="success-badge">It's a date!</p>
+      <h2 class="success-title">See you on Valentine's 💕</h2>
+      <p class="success-tagline">You're in. Thank you for your commitment.</p>
+      <a href="#" class="btn btn-calendar" id="add-to-calendar">Make sure you are free that day and remind yourself &lt;3</a>
+      <p class="success-prompt">Save the date so we don't double-book with our other plans (sleeping).</p>
+    </div>
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  </section>
+
+  <!-- Easter egg toasts (hidden) -->
+  <div id="egg-toast" class="egg-toast" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

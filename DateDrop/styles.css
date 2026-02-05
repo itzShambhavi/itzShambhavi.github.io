@@ -1,0 +1,877 @@
+/* --- Variables (Valentine theme) --- */
+:root {
+  --bg: #fff5f6;
+  --bg-deep: #ffebef;
+  --rose: #e8919a;
+  --rose-dark: #d45d6b;
+  --blush: #f5c6ce;
+  --valentine-red: #c94a5a;
+  --gold: #c9a962;
+  --text: #2d1f24;
+  --text-soft: #6b4450;
+  --white: #fff;
+  --shadow: 0 4px 24px rgba(201, 74, 90, 0.18);
+  --shadow-lg: 0 12px 48px rgba(201, 74, 90, 0.22);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+}
+
+/* --- Reset & base --- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text);
+  background: linear-gradient(165deg, var(--bg) 0%, var(--bg-deep) 40%, #ffe4e8 70%, #ffd6dc 100%);
+  overflow-x: hidden;
+  touch-action: pan-y;
+}
+
+/* Valentine hearts background */
+.hearts-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c94a5a'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  background-size: 48px 48px;
+}
+
+/* Subtle noise overlay */
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Screens --- */
+.screen {
+  min-height: 100vh;
+  min-height: 100dvh; /* better on mobile with dynamic toolbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Ensure there is always scrollable content (fixes "can't swipe" on mobile) */
+.screen-hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: 4rem;
+}
+
+/* Success screen is the only one hidden by default (fixed overlay, shown on YES) */
+.screen-success {
+  display: flex;
+}
+
+/* --- Hero --- */
+.screen-hero {
+  text-align: center;
+}
+
+/* Product-launch pill badges */
+.launch-pill,
+.section-pill,
+.success-pill {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--valentine-red);
+  background: rgba(201, 74, 90, 0.12);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.success-pill {
+  color: var(--rose-dark);
+  margin-bottom: 0.75rem;
+}
+
+.hero-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.25rem;
+  display: block;
+  box-shadow: var(--shadow-lg);
+  border: 4px solid var(--white);
+}
+
+.hero-product {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+  margin: 0 0 0.35rem;
+}
+
+.hero-badge {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 1.25rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  line-height: 1.3;
+  color: var(--text);
+  max-width: 22ch;
+  margin: 0 auto 1rem;
+}
+
+.hero-title .name {
+  color: var(--rose-dark);
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.hero-title .name:hover {
+  color: var(--rose);
+}
+
+.hero-title .sparkle {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hero-title .sparkle:hover {
+  transform: scale(1.2) rotate(12deg);
+}
+
+.hero-sub {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+.hero-availability {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--valentine-red);
+  margin: 1rem 0 0;
+  opacity: 0.9;
+}
+
+.cta-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  color: var(--rose-dark);
+  font-size: 1.5rem;
+  cursor: pointer;
+  animation: bounce 2s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cta-scroll-heart {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* --- Meme cards --- */
+.screen-memes {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-pill {
+  margin-bottom: 0.5rem;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 2rem;
+}
+
+.meme-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.meme-card {
+  width: min(160px, 42vw);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.meme-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.meme-card[data-delay="1"].visible {
+  transition-delay: 0.2s;
+}
+
+.meme-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.meme-img {
+  height: 180px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  overflow: hidden;
+}
+
+.meme-img.chill {
+  background: linear-gradient(145deg, #e8e0e4 0%, #d8d0d6 100%);
+  color: #888;
+}
+
+.meme-img.reply {
+  background: linear-gradient(145deg, #ffd6dc 0%, #ffb8c4 100%);
+  color: var(--valentine-red);
+}
+
+.memes-caption {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+/* --- Quiz --- */
+.screen-quiz {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.quiz-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  font-weight: 600;
+  text-align: center;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+}
+
+.quiz-emoji {
+  display: inline-block;
+}
+
+.quiz-intro {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  text-align: center;
+  margin: 0 0 1.5rem;
+  line-height: 1.4;
+}
+
+.quiz-form {
+  text-align: left;
+}
+
+.quiz-question {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(201, 74, 90, 0.12);
+}
+
+.quiz-bonus {
+  border: 2px dashed var(--blush);
+  background: linear-gradient(135deg, #fff 0%, #fff9fa 100%);
+}
+
+.quiz-question--video .lore-quiz-video {
+  width: 100%;
+  max-height: 200px;
+  border-radius: var(--radius);
+  margin-bottom: 0.75rem;
+  background: #000;
+}
+
+.quiz-q {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.quiz-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  cursor: pointer;
+  padding: 0.4rem 0;
+  border-radius: 8px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.quiz-opt:hover {
+  background: rgba(201, 74, 90, 0.06);
+  color: var(--text);
+}
+
+.quiz-opt input {
+  accent-color: var(--valentine-red);
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.quiz-actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.btn-quiz-submit {
+  background: linear-gradient(135deg, var(--valentine-red) 0%, var(--rose-dark) 100%);
+  color: var(--white);
+  box-shadow: var(--shadow);
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+}
+
+.btn-quiz-submit:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.quiz-result,
+.quiz-passed {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(201, 74, 90, 0.12);
+}
+
+.quiz-result--hidden,
+.quiz-passed--hidden {
+  display: none !important;
+}
+
+.quiz-result.fail {
+  border-color: rgba(201, 74, 90, 0.3);
+  background: linear-gradient(135deg, #fff 0%, #fff5f6 100%);
+}
+
+.quiz-result.pass {
+  border-color: var(--blush);
+  background: linear-gradient(135deg, #fff 0%, #fff9fa 100%);
+}
+
+.quiz-result-text {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0 0 1rem;
+  line-height: 1.4;
+}
+
+.btn-quiz-redo {
+  background: var(--white);
+  color: var(--valentine-red);
+  border: 2px solid var(--rose);
+}
+
+.btn-quiz-redo:hover {
+  background: rgba(201, 74, 90, 0.08);
+}
+
+.quiz-passed-text {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0 0 1rem;
+}
+
+.btn-quiz-scroll {
+  background: linear-gradient(135deg, var(--valentine-red) 0%, var(--rose-dark) 100%);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+/* --- Pretty quiz --- */
+.screen-pretty-quiz {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.pretty-quiz-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  font-weight: 600;
+  text-align: center;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+}
+
+.pretty-quiz-intro {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  text-align: center;
+  margin: 0 0 1.5rem;
+}
+
+.pretty-quiz-slides {
+  position: relative;
+  min-height: 380px;
+}
+
+.pretty-slide {
+  display: none;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.pretty-slide.pretty-slide--active {
+  display: block;
+  animation: prettyFade 0.35s ease;
+}
+
+@keyframes prettyFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pretty-slide-img {
+  width: 100%;
+  max-width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 4px solid var(--white);
+  margin-bottom: 1rem;
+}
+
+.pretty-slide--video .pretty-slide-video {
+  width: 100%;
+  max-width: 260px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 4px solid var(--white);
+  margin-bottom: 1rem;
+  background: #000;
+}
+
+.pretty-slide--video .pretty-slide-q {
+  margin-top: 0.25rem;
+}
+
+.pretty-slide-q {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 1rem;
+  line-height: 1.35;
+}
+
+.pretty-slide-q em {
+  font-style: italic;
+  color: var(--valentine-red);
+}
+
+.pretty-slide-opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.btn-pretty-opt {
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  background: var(--white);
+  color: var(--text);
+  border: 2px solid var(--blush);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-pretty-opt:hover {
+  background: rgba(201, 74, 90, 0.08);
+  border-color: var(--rose);
+  transform: scale(1.02);
+}
+
+.pretty-quiz-slides--done {
+  display: none;
+}
+
+.pretty-quiz-done {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(201, 74, 90, 0.12);
+}
+
+.pretty-quiz-done--hidden {
+  display: none !important;
+}
+
+.pretty-quiz-done-text {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0 0 1rem;
+}
+
+/* --- Are we cute together? --- */
+.screen-cute-together {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
+.cute-together-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 1.5rem;
+}
+
+.cute-together-photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cute-together-img {
+  width: 100%;
+  max-width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 4px solid var(--white);
+}
+
+.cute-together-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-cute-yes {
+  background: linear-gradient(135deg, var(--valentine-red) 0%, var(--rose-dark) 100%);
+  color: var(--white);
+  box-shadow: var(--shadow);
+  font-size: 1.1rem;
+  padding: 1rem 1.5rem;
+}
+
+.btn-cute-yes:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Choice locked until lore + pretty quiz + cute together */
+.screen-choice--locked {
+  opacity: 0.5;
+  pointer-events: none;
+  position: relative;
+}
+
+.screen-choice--locked::after {
+  content: "🔒 Complete the steps above (then say we're cute together) to unlock";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  background: var(--white);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  white-space: nowrap;
+  max-width: 90%;
+  white-space: normal;
+  text-align: center;
+}
+
+.screen-choice.screen-choice--unlocked {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.screen-choice.screen-choice--unlocked::after {
+  display: none;
+}
+
+/* --- Choice --- */
+.screen-choice {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.choice-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--text);
+}
+
+.choice-title::before {
+  content: "💕 ";
+}
+
+.choice-title::after {
+  content: " 💕";
+}
+
+.choice-sub {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin: -1rem auto 1.5rem;
+  max-width: 22ch;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  position: relative;
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, var(--valentine-red) 0%, var(--rose-dark) 100%);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.btn-yes:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-think {
+  background: var(--white);
+  color: var(--text-soft);
+  border: 2px solid var(--blush);
+}
+
+.btn-think:hover {
+  border-color: var(--rose);
+  color: var(--text);
+}
+
+/* Dodge: position updated by JS */
+.btn-think.dodge {
+  transition: left 0.15s ease-out, top 0.15s ease-out;
+}
+
+.choice-hint {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* --- Success --- */
+.screen-success {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: linear-gradient(165deg, var(--bg) 0%, var(--bg-deep) 40%, #ffe4e8 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.screen-success.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.success-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.success-photo {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  display: block;
+  box-shadow: var(--shadow);
+  border: 3px solid var(--white);
+}
+
+.success-tagline {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin: -0.5rem 0 1.5rem;
+  font-style: italic;
+}
+
+.success-badge {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--rose-dark);
+  margin-bottom: 0.5rem;
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.btn-calendar {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--valentine-red) 0%, var(--rose-dark) 100%);
+  color: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.btn-calendar:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.success-prompt {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  max-width: 28ch;
+  margin: 0 auto;
+}
+
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- Easter egg toast --- */
+.egg-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--text);
+  color: var(--white);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  z-index: 2000;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.egg-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
